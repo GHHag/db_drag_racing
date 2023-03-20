@@ -1,9 +1,9 @@
 const express = require('express');
 const redis = require('redis');
-const client = redis.createClient();
+const client = redis.createClient('redis://127.0.0.1:6379');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Parse incoming JSON data
 app.use(express.json());
