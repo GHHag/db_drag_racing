@@ -2,6 +2,11 @@ import random
 from locust import HttpUser, task, between, constant, SequentialTaskSet
 import redis
 
+from data.data import format_json_data
+#import data.data
+
+print(help(data))
+
 # Vad vill vi jämföra?
 # COST - check the different costs between Redis and BT
 # Integrate towards Redis and BT. Where are they going to run? GCP
@@ -9,6 +14,7 @@ import redis
 # 1) Query response time: The time it takes for the db to respond to a query is an important indicator of performance.
 # 2) Throughput: Measures number of queries the database can handle within a period of time.
 
+"""
 class RedisUser(SequentialTaskSet):
    
     @task
@@ -30,4 +36,4 @@ class RedisUser(SequentialTaskSet):
 class MyLoadTest(HttpUser):
     host='http://localhost'
     task=[RedisUser]
-    
+""" 
