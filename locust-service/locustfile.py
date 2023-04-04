@@ -1,11 +1,9 @@
 import random
+import sys
+import pprint as pprint
+
 from locust import HttpUser, task, between, constant, SequentialTaskSet
 import redis
-
-from data.data import format_json_data
-#import data.data
-
-print(help(data))
 
 # Vad vill vi jämföra?
 # COST - check the different costs between Redis and BT
@@ -13,6 +11,22 @@ print(help(data))
 # PERFORMANCE:
 # 1) Query response time: The time it takes for the db to respond to a query is an important indicator of performance.
 # 2) Throughput: Measures number of queries the database can handle within a period of time.
+
+
+if __name__ == '__main__':
+    sys.path.append('../data')
+    from data import format_json_data
+    
+    cars_data_list = format_json_data('../data/cars_data.json', 'retailUnit', 'id')
+    reparations_data_list = format_json_data('../data/reparations_data.json', 'car_id', 'id')
+    parts_data_list = format_json_data('../data/parts_data.json', 'reparation_id', 'id')
+
+    pprint.pprint(cars_data_list[0])
+    print()
+    pprint.pprint(reparations_data_list[0])
+    print()
+    pprint.pprint(parts_data_list[0])
+    print()
 
 """
 class RedisUser(SequentialTaskSet):
@@ -37,3 +51,4 @@ class MyLoadTest(HttpUser):
     host='http://localhost'
     task=[RedisUser]
 """ 
+

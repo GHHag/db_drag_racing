@@ -5,6 +5,12 @@ import dataclasses
 from dataclasses import dataclass
 import datetime as dt
 
+"""
+TODO: 
+-Accept command line argument for the number of rows to generate
+-Replace hard coded values if needed
+"""
+
 
 @dataclass
 class Reparation:
