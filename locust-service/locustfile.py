@@ -1,7 +1,8 @@
 from locust import HttpLocust, TaskSet, task
+import redis
+import random
 
-
-class UserBehavior(TaskSet):
+"""class UserBehavior(TaskSet):
     @task(1)
     def create_post(self):
         self.client.get(
@@ -12,3 +13,4 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpLocust):
     task_set = UserBehavior
+"""
