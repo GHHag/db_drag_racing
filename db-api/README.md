@@ -23,7 +23,7 @@ Here's how to get started locally. Recommended is to activate a virtual environm
 
 ## Setup
 
-Install requirements
+Install requirements, pwd: /db_drag_racing/db-api
 
 ```bash
 python3 -m venv venv &&
