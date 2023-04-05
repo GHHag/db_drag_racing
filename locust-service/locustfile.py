@@ -1,16 +1,14 @@
-from locust import HttpLocust, TaskSet, task
-import redis
-import random
+from locust import HttpUser, task
 
-"""class UserBehavior(TaskSet):
+
+class MyUser(HttpUser):
     @task(1)
     def create_post(self):
-        self.client.get(
-            "/redis/hget?hash=UA&key=52fe86a8-d222-11ed-90cb-5254004a31de",
+        self.client.post(
+            "/redis/hset?hash=UA&key=52fe86a8-d222-11ed-90cb-5254004a31de",
             headers={"content-type": "application/json"},
         )
 
 
-class WebsiteUser(HttpLocust):
-    task_set = UserBehavior
-"""
+class WebsiteUser(HttpUser):
+    task_set = MyUser
