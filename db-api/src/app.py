@@ -5,7 +5,7 @@ from clients.redis_client import RedisClient
 app = Flask(__name__)
 client = RedisClient()
 
-
+# Router & Controller handles everything related to HTTP requests
 @app.route("/redis/hget", methods=["GET"])
 def hget_endpoint():
     """

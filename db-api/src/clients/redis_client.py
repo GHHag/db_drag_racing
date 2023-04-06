@@ -1,6 +1,7 @@
 import redis
 
-
+# Service Layer -  business logic.
+# WHAT are we saving in the redis instance.
 class RedisClient:
     def __init__(self):
         # Setup
