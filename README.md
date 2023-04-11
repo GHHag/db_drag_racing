@@ -2,13 +2,16 @@
 
 # A general README.md - DatabaseDragRacing
 
-The layout is the following:
+- Requirements: Python 3
+
+### The layout is the following:
+
 We have two folders (db-api/ and locust-service/), ie two microservices.
 
 Inside each folder there is a README.md file.
 Follow the instructions in both the README.md to get started.
 
-### Basic setup of the application
+### Basic setup of the application:
 
 1. db-api -> is where the api is.
 
@@ -27,3 +30,21 @@ Follow the instructions in both the README.md to get started.
 ### Locust part:
 
 - locustfile.py -> main test file.
+
+---
+
+### To launch api and run tests:
+
+1. Activate virtual env in both db-api/ and locust-service/ (read the readme in how to do that inside those folders).
+
+2. Open the API connection by cd into db-api/ and run in one terminal:
+
+```
+python app.py
+```
+
+3. Start the locust file in order to run the tests, cd into locust-service/ and run in another terminal:
+
+```
+locust -f locustfile.py
+```
