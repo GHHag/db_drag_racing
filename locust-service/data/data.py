@@ -11,7 +11,6 @@ def format_json_data(json_file_path, hash_key, unique_key):
     with open(json_file_path, "r") as file:
         json_data = json.loads(file.read())
         for data_dict in json_data:
-            
             hash_ = data_dict.get(hash_key)
             key = data_dict.get(unique_key)
             data = {

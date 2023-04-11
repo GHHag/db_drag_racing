@@ -30,11 +30,14 @@ class Part:
     name: str
 
 
+# Open file containing mock data
 with open('MOCK_DATA.json', 'r') as file:
+    # json_data är själva MOCK_DATA
     json_data = json.loads(file.read())
 
     data_dict = {}
     for object in json_data:
+        # Collect all unique values and append to a list for each key
         for k, v in object.items():
             if k in data_dict:
                 data_dict[k].append(v)
@@ -42,18 +45,24 @@ with open('MOCK_DATA.json', 'r') as file:
                 data_dict[k] = [v]
 
     data = []
+    # Iterate a given number of times to generate that amount of data entries
     #for i in range(100000):
-    for i in range(10):
+    for i in range(100):
         row = {}
+        # Every car will have relations with data for reparations and reparations
+        # will in turn have relations with parts
         reparations = []
         parts = []
         for k, v in data_dict.items():
             if k == 'id':
                 row[k] = str(uuid.uuid1())
-                #row['reparations'] = []
+
+                # Create instances of reparations and parts
                 row['reparation_ids'] = []
                 for i in range(random.randint(1, 20)):
                     reparation_id = str(uuid.uuid1())
+                    
+                    # Create instances of the Part class
                     part_ids = []
                     for n in range(random.randint(1, 15)):
                         part_id = str(uuid.uuid1())
@@ -62,7 +71,8 @@ with open('MOCK_DATA.json', 'r') as file:
                             "Some part name"
                         ))
                         part_ids.append(part_id)
-                    #row['reparations'].append(Reparation(
+
+                    # Create instance of the Reparations class
                     reparations.append(Reparation(
                         reparation_id, row[k], str(dt.datetime.now()),
                         random.randint(1500, 30000), "Reparation note",
@@ -70,6 +80,10 @@ with open('MOCK_DATA.json', 'r') as file:
                     ))
                     row['reparation_ids'].append(reparation_id)
                 continue
+            # Generate random value for the carvin key
+            if k == 'carvin':
+                row[k] = str(uuid.uuid1())
+
             length = len(data_dict[k])
             random_num = random.randint(0, length)
             row[k] = data_dict[k][random_num - 1]
