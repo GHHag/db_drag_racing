@@ -3,9 +3,14 @@ import json
 import pprint as pprint
 
 # Läser in och formaterar datan som skickas sedan till Redis server
-# Detta kan bli en Locust fil!
 
 
+"""
+Formats and returns data from a json file.
+    @param json_file_path - File path to a .json file
+    @param hash_key - The key of the json data to be used as hash key
+    @param unique_key - The key of the json data to be used as unique key
+"""
 def format_json_data(json_file_path, hash_key, unique_key):
     formatted_data_list = []
     with open(json_file_path, "r") as file:
@@ -20,15 +25,19 @@ def format_json_data(json_file_path, hash_key, unique_key):
             formatted_data_list.append(
                 {hash_key: hash_, unique_key: key, "data": data_str}
             )
+            
+            # Example post request
             # requests.post(
-            #    f"http://localhost:8080/redis/hset?hash={retail_unit}&key={id}&value={data_str}"
+            #    f"http://localhost:8080/redis/hset?hash={hash_key}&key={unique_key}&value={data_str}"
             # )
 
     return formatted_data_list
 
 
 if __name__ == "__main__":
-    cars_data_list = format_json_data("cars_data.json", "retailUnit", "id")
+    # Call the format_json_data function and pass argument for the hashes and keys to be used 
+    # for querying the data
+    cars_data_list = format_json_data("cars_data.json", "id", "id")
     reparations_data_list = format_json_data("reparations_data.json", "car_id", "id")
     parts_data_list = format_json_data("parts_data.json", "reparation_id", "id")
 
