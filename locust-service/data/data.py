@@ -11,6 +11,8 @@ Formats and returns data from a json file.
     @param hash_key - The key of the json data to be used as hash key
     @param unique_key - The key of the json data to be used as unique key
 """
+
+
 def format_json_data(json_file_path, hash_key, unique_key):
     formatted_data_list = []
     with open(json_file_path, "r") as file:
@@ -25,7 +27,7 @@ def format_json_data(json_file_path, hash_key, unique_key):
             formatted_data_list.append(
                 {hash_key: hash_, unique_key: key, "data": data_str}
             )
-            
+
             # Example post request
             # requests.post(
             #    f"http://localhost:8080/redis/hset?hash={hash_key}&key={unique_key}&value={data_str}"
@@ -35,7 +37,7 @@ def format_json_data(json_file_path, hash_key, unique_key):
 
 
 if __name__ == "__main__":
-    # Call the format_json_data function and pass argument for the hashes and keys to be used 
+    # Call the format_json_data function and pass argument for the hashes and keys to be used
     # for querying the data
     cars_data_list = format_json_data("cars_data.json", "id", "id")
     reparations_data_list = format_json_data("reparations_data.json", "car_id", "id")
@@ -47,3 +49,4 @@ if __name__ == "__main__":
     print()
     pprint.pprint(parts_data_list[0])
     print()
+    print(len(cars_data_list))

@@ -31,7 +31,7 @@ class Part:
 
 
 # Open file containing mock data
-with open('MOCK_DATA.json', 'r') as file:
+with open("MOCK_DATA.json", "r") as file:
     # json_data är själva MOCK_DATA
     json_data = json.loads(file.read())
 
@@ -43,10 +43,23 @@ with open('MOCK_DATA.json', 'r') as file:
                 data_dict[k].append(v)
             else:
                 data_dict[k] = [v]
-
+    """
+    How the above function is creating/reworking the data
+    output_from_above_logic = {
+        "retailUnit": ["PT", "DK", "...", "..."],
+        "id": [
+            "a0014cde-ea93-4d95-8260-273198c50a95",
+            "a0014cde-ea93-4d95-8260-273198c51337",
+            "...",
+            "...",
+        ],
+        "date": ["similar list thingy"],
+        "...": "...",
+    }
+    """
     data = []
     # Iterate a given number of times to generate that amount of data entries
-    #for i in range(100000):
+    # for i in range(100000):
     for i in range(100):
         row = {}
         # Every car will have relations with data for reparations and reparations
@@ -54,34 +67,37 @@ with open('MOCK_DATA.json', 'r') as file:
         reparations = []
         parts = []
         for k, v in data_dict.items():
-            if k == 'id':
+            if k == "id":
                 row[k] = str(uuid.uuid1())
 
                 # Create instances of reparations and parts
-                row['reparation_ids'] = []
+                row["reparation_ids"] = []
                 for i in range(random.randint(1, 20)):
                     reparation_id = str(uuid.uuid1())
-                    
+
                     # Create instances of the Part class
                     part_ids = []
                     for n in range(random.randint(1, 15)):
                         part_id = str(uuid.uuid1())
-                        parts.append(Part(
-                            part_id, reparation_id, 
-                            "Some part name"
-                        ))
+                        parts.append(Part(part_id, reparation_id, "Some part name"))
                         part_ids.append(part_id)
 
                     # Create instance of the Reparations class
-                    reparations.append(Reparation(
-                        reparation_id, row[k], str(dt.datetime.now()),
-                        random.randint(1500, 30000), "Reparation note",
-                        "Byggare Bob", part_ids
-                    ))
-                    row['reparation_ids'].append(reparation_id)
+                    reparations.append(
+                        Reparation(
+                            reparation_id,
+                            row[k],
+                            str(dt.datetime.now()),
+                            random.randint(1500, 30000),
+                            "Reparation note",
+                            "Byggare Bob",
+                            part_ids,
+                        )
+                    )
+                    row["reparation_ids"].append(reparation_id)
                 continue
             # Generate random value for the carvin key
-            if k == 'carvin':
+            if k == "carvin":
                 row[k] = str(uuid.uuid1())
 
             length = len(data_dict[k])
@@ -93,11 +109,11 @@ with open('MOCK_DATA.json', 'r') as file:
     reparations_json_data = json.dumps([dataclasses.asdict(x) for x in reparations])
     parts_json_data = json.dumps([dataclasses.asdict(x) for x in parts])
 
-    with open('cars_data.json', 'w') as write_file:
+    with open("cars_data.json", "w") as write_file:
         write_file.write(cars_json_data)
 
-    with open('reparations_data.json', 'w') as write_file:
+    with open("reparations_data.json", "w") as write_file:
         write_file.write(reparations_json_data)
 
-    with open('parts_data.json', 'w') as write_file:
+    with open("parts_data.json", "w") as write_file:
         write_file.write(parts_json_data)
