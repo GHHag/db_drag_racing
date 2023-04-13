@@ -58,6 +58,7 @@ with open("MOCK_DATA.json", "r") as file:
     }
     """
     data = []
+    reperations_operators = ['Operator1', 'Operator2', 'Operator3', 'Operator4', 'Operator5', 'Operator6', 'Operator7', 'Operator8','Operator9', 'Operator10', 'Operator11', 'Operator12', 'Operator13', 'Operator14', 'Operator15', 'Operator16', 'Operator17', 'Operator18', 'Operator19', 'Operator20']
     # Iterate a given number of times to generate that amount of data entries
     # for i in range(100000):
     for i in range(100):
@@ -90,7 +91,7 @@ with open("MOCK_DATA.json", "r") as file:
                             str(dt.datetime.now()),
                             random.randint(1500, 30000),
                             "Reparation note",
-                            "Byggare Bob",
+                            reperations_operators[random.randint(0,len(reperations_operators)-1)],     
                             part_ids,
                         )
                     )
