@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data/redis_data
+  
+  api:
+    depends_on:
+      - redis
+    build: ./db-api/src
+    ports:
+      - 8080:8080
+
+  locust-service:
+    depends_on:
+      - api
+    build: ./locust-service
+    ports:
+      - 8089:8089
+
+volumes:
+  redis_data:
+
