@@ -15,16 +15,16 @@ class MyUser(HttpUser):
         self.data_key = "data"
 
         # Define hash and unique key for cars
-        self.car_hash_key = "id"
+        self.car_hash_key = "retailUnit"
         self.car_unique_key = "id"
 
         # Define hash and unique key for reparations
         # self.reparation_hash_key = 'reparation_id'
-        self.reparation_hash_key = "car_id"
+        self.reparation_hash_key = "operator"
         self.reparation_unique_key = "id"
 
         # Define hash and unique key for parts
-        self.part_hash_key = "reparation_id"
+        self.part_hash_key = "id"
         self.part_unique_key = "id"
 
         # Read in data
