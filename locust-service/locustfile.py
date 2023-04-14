@@ -101,8 +101,13 @@ class MyUser(HttpUser):
     @task
     def get_car_hash(self):
         # how do we get an item from a random index of the set? 
-        random_car_hash = self.car_hashes[random.randint(0, len(self.car_hashes) - 1)]
-        random_car_id = self.car_ids.get(random_car_hash)[random.randint(0, len(self.car_ids.get(random_car_hash)) - 1)]
+        # random_car_hash = self.car_hashes[random.randint(0, len(self.car_hashes) - 1)]
+        # random_car_id = self.car_ids.get(random_car_hash)[random.randint(0, len(self.car_ids.get(random_car_hash)) - 1)]
+
+        # get a random car hash from the set
+        random_car_hash = random.sample(self.car_hashes, 1)[0]
+        # get a random car id from the list of car ids associated with the selected car hash
+        random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
 
         response = self.client(f'/redis/hget?hash={random_car_hash}&key={random_car_id}')
         if response.status.status_code == 200:
