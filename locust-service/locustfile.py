@@ -44,9 +44,9 @@ class MyUser(HttpUser):
         self.car_hashes = set()
         self.car_ids = {} # { PT: [car_id1, car_id2], RU: [] }
         self.reparation_hashes = set()
-        self.reparation_ids = []
+        self.reparation_ids = {}
         self.part_hashes = set()
-        self.part_ids = []
+        self.part_ids = {}
         
     # A post request to API (create)
     # If len > 0 then pop so we dont write the same line twice
@@ -81,8 +81,8 @@ class MyUser(HttpUser):
                 f"/redis/hset?hash={data_entry.get(self.reparation_hash_key)}&key={data_entry.get(self.reparation_unique_key)}&value={data_entry.get(self.data_key)}",
                 headers={"content-type": "application/json"},
             )
-            self.reparation_hashes.add(data_entry.get(self.reparation_hash_key))
-            self.reparation_ids.append(data_entry.get(self.reparation_unique_key))
+            #self.reparation_hashes.add(data_entry.get(self.reparation_hash_key))
+            #self.reparation_ids.append(data_entry.get(self.reparation_unique_key))
       
     @task
     def create_parts_post(self):
@@ -92,8 +92,8 @@ class MyUser(HttpUser):
                 f"/redis/hset?hash={data_entry.get(self.part_hash_key)}&key={data_entry.get(self.part_unique_key)}&value={data_entry.get(self.data_key)}",
                 headers={"content-type": "application/json"},
             )
-            self.part_hashes.add(data_entry.get(self.part_hash_key))
-            self.part_ids.append(data_entry.get(self.part_unique_key))
+            # self.part_hashes.add(data_entry.get(self.part_hash_key))
+            # self.part_ids.append(data_entry.get(self.part_unique_key))
 
     wait_time = between(0, 1)
     
@@ -105,16 +105,17 @@ class MyUser(HttpUser):
         # random_car_id = self.car_ids.get(random_car_hash)[random.randint(0, len(self.car_ids.get(random_car_hash)) - 1)]
 
         # get a random car hash from the set
-        random_car_hash = random.sample(self.car_hashes, 1)[0]
+        if len(self.car_hashes) >= 1:
+            random_car_hash = random.sample(self.car_hashes, 1)[0]
         # get a random car id from the list of car ids associated with the selected car hash
-        random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
+            random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
 
-        response = self.client(f'/redis/hget?hash={random_car_hash}&key={random_car_id}')
-        if response.status.status_code == 200:
-            redis_hash = response.json()
-            print(redis_hash)
-        else:
-            pass
+            response = self.client.get(f'/redis/hget?hash={random_car_hash}&key={random_car_id}')
+            if response.status_code == 200:
+                redis_hash = response.json()
+                print(redis_hash)
+            else:
+                pass
 
 """
 # READ (cRud), New Class?
