@@ -58,3 +58,24 @@ class RedisClient:
             print(trace_payload, err, "RedisClient.hset")
 
             return (500, {"message": "Error - see prints"})
+
+    def hdel(self, hash: str, key: str):
+        """
+        Sending HSET operation to Redis
+        """
+        print(f"Writing to Redis hash={hash}, key={key}")
+        if not hash or not key:
+            return (
+                500,
+                f"'hash', 'key' and 'value' must have values. Values were hash={hash}, key={key}",
+            )
+
+        try:
+            self.redis_client.hdel(hash, key)
+            return (200, {"message": "OK"})
+
+        except Exception as err:
+            trace_payload = {"hash": hash, "key": key}
+            print(trace_payload, err, "RedisClient.hdel")
+
+            return (500, {"message": "Error - see prints"})
