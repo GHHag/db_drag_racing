@@ -17,8 +17,7 @@ Here's how to get started locally. Recommended is to activate a virtual environm
 
 ```bash
 gcloud beta emulators bigtable start --host-port=127.0.0.1:8086
-# in other shell, before starting db-api:
-$(gcloud beta emulators bigtable env-init)
+export BIGTABLE_EMULATOR_HOST=127.0.0.1:8086
 ```
 
 ## Exit

@@ -23,6 +23,12 @@ Here's how to get started locally. Recommended is to activate a virtual environm
 
 ## Setup
 
+# Start bigtable
+
+```bash
+gcloud beta emulators bigtable start --host-port=127.0.0.1:8086
+```
+
 Install requirements, pwd: /db_drag_racing/db-api
 
 ```bash
@@ -30,7 +36,8 @@ python3 -m venv venv &&
     source venv/bin/activate &&
     python -m pip install --upgrade pip &&
     pip uninstall -r src/requirements.txt -y &&
-    pip install -r src/requirements.txt --no-cache-dir
+    pip install -r src/requirements.txt --no-cache-dir &&
+    export BIGTABLE_EMULATOR_HOST=127.0.0.1:8086
 ```
 
 ## Run
@@ -42,6 +49,8 @@ python app.py
 ## Exit virual environment
 
 ```bash
-deactivate &&
-    rm -rf venv
+deactivate
+rm -rf venv &&
+    sh kill.sh &&
+    unset BIGTABLE_EMULATOR_HOST
 ```
