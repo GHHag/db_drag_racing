@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from clients.redis_client import RedisClient
-from clients.bigtable_client import instance
+from clients.bigtable_client import BigtableClient
 
 app = Flask(__name__)
 client = RedisClient()
+bigtable_client = BigtableClient()
 
 # Router & Controller handles everything related to HTTP requests
 @app.route("/redis/hget", methods=["GET"])
