@@ -1,31 +1,35 @@
-import datetime
 from google.cloud import bigtable
-from google.cloud.bigtable import column_family
-from google.cloud.bigtable import row_filters
 
-# Service Layer -  business logic.
-# WHAT are we saving in the bigtable instance.
+
 class BigtableClient:
-    def __init__(self):
-        # Setup
-        # The client must be created with admin=True because it will create a table.
+    def __init__(self, project_id, instance_id, table_id):
+        self.project_id = project_id
+        self.instance_id = instance_id
+        self.table_id = table_id
 
-        self.client = bigtable.Client(project='any-project', admin=True)
-        self.instance = self.client.instance('any-instance')
+        # Set environment variables
+        self._set_env_vars()
 
-        print("Creating the {} table.".format(table_id))
-        table = instance.table(table_id)
+        # Create Bigtable client and table objects
+        self.client = bigtable.Client()
+        self.instance = self.client.instance(self.instance_id)
+        self.table = self.instance.table(self.table_id)
 
-        print("Creating column family cf1 with Max Version GC rule...")
-        # Create a column family with GC policy : most recent N versions
-        # Define the GC policy to retain only the most recent 2 versions
-        max_versions_rule = column_family.MaxVersionsGCRule(2)
-        column_family_id = "cf1"
-        column_families = {column_family_id: max_versions_rule}
-        if not table.exists():
-            table.create(column_families=column_families)
-        else:
-            print("Table {} already exists.".format(table_id))
+        # Create column family if it doesn't exist
+        self._create_column_family("cf1")
 
-    def insert(self):
-        pass
+    def _set_env_vars(self):
+        import os
+
+        os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
+        os.environ["BIGTABLE_PROJECT_ID"] = self.project_id
+        os.environ["BIGTABLE_INSTANCE_ID"] = self.instance_id
+
+    def _create_column_family(self, column_family_id):
+        column_families = {column_family_id: None}
+        self.table.create(column_families=column_families)
+
+    def write_row(self, row_key, column_family_id, column_id, value):
+        row = self.table.row(row_key)
+        row.set_cell(column_family_id, column_id, value)
+        row.commit()
