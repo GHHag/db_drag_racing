@@ -1,12 +1,19 @@
+import os
 from flask import Flask, request, jsonify
 from clients.redis_client import RedisClient
 from clients.bigtable_client import BigtableClient
+
+# Configuration for Bigtable client
+os.environ["BIGTABLE_EMULATOR_HOST"] = "localhost:8086"
+os.environ["BIGTABLE_PROJECT_ID"] = 'project_id'
+os.environ["BIGTABLE_INSTANCE_ID"] = "instance_id"
 
 app = Flask(__name__)
 client = RedisClient()
 bigtable_client = BigtableClient()
 
 # Router & Controller handles everything related to HTTP requests
+# REDIS Routes: GET, POST, DELETE
 @app.route("/redis/hget", methods=["GET"])
 def hget_endpoint():
     """
@@ -92,6 +99,39 @@ def hdel_endpoint():
 
       # Send request to Redis
       (status, response) = client.hdel(hash, key)
+
+      # Respond
+      return (
+          jsonify(response),
+          status,
+      )
+
+  except Exception as err:
+      print(f"Error occured : {err}")
+      return (
+          500,
+          jsonify(
+              {
+                  "status": "Error",
+                  "message": "Something went wrong - check logs!",
+              }
+          ),
+      )
+
+# BIGTABLE Routes: POST,
+@app.route('/bigtable/write', methods=['POST'])
+def write_endpoint():
+  """
+  Endpoint for Bigtable write
+  Usage:
+      localhost:8080/bigtable/write
+  """
+  try:
+      # Parse path params
+      request_body = request.get_json()
+      print(f"The request body is : {request_body}")
+
+      (status, response) = bigtable_client.write_row(request_body)
 
       # Respond
       return (
