@@ -58,7 +58,17 @@ with open("MOCK_DATA.json", "r") as file:
     }
     """
     data = []
-    reperations_operators = ['Operator1', 'Operator2', 'Operator3', 'Operator4', 'Operator5', 'Operator6', 'Operator7', 'Operator8','Operator9', 'Operator10', 'Operator11', 'Operator12', 'Operator13', 'Operator14', 'Operator15', 'Operator16', 'Operator17', 'Operator18', 'Operator19', 'Operator20']
+    reperations_operators = [
+        'Operator1', 'Operator2', 'Operator3', 'Operator4', 'Operator5', 'Operator6', 
+        'Operator7', 'Operator8','Operator9', 'Operator10', 'Operator11', 'Operator12', 
+        'Operator13', 'Operator14', 'Operator15', 'Operator16', 'Operator17', 
+        'Operator18', 'Operator19', 'Operator20'
+    ]
+    part_names = [
+        'Part1', 'Part2', 'Part3', 'Part4', 'Part5', 'Part6', 'Part7', 'Part8', 'Part9', 
+        'Part10', 'Part11', 'Part12','Part13', 'Part14','Part15', 'Part16', 'Part17', 
+        'Part18', 'Part19','Part20'
+    ]
     # Iterate a given number of times to generate that amount of data entries
     # for i in range(100000):
     for i in range(100):
@@ -80,7 +90,12 @@ with open("MOCK_DATA.json", "r") as file:
                     part_ids = []
                     for n in range(random.randint(1, 15)):
                         part_id = str(uuid.uuid1())
-                        parts.append(Part(part_id, reparation_id, "Some part name"))
+                        parts.append(
+                            Part(
+                                part_id, reparation_id, 
+                                part_names[random.randint(0, len(part_names)-1)]
+                            )
+                        )
                         part_ids.append(part_id)
 
                     # Create instance of the Reparations class

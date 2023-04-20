@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from clients.redis_client import RedisClient
-
+from clients.bigtable_client import BigtableClient
 
 app = Flask(__name__)
 client = RedisClient()
+bigtable_client = BigtableClient()
 
 # Router & Controller handles everything related to HTTP requests
 @app.route("/redis/hget", methods=["GET"])
@@ -75,6 +76,40 @@ def hset_endpoint():
                 }
             ),
         )
+
+@app.route("/redis/hdel", methods=["DELETE"])
+def hdel_endpoint():
+  """
+  Endpoint for Redis HDEL
+  Usage:
+      localhost:8080/redis/hset?hash=<some hash>&key=<some key>
+  """
+  try:
+      # Parse path params
+      hash = request.args.get("hash")
+      key = request.args.get("key")
+      print(f"The request is: hash={hash}, key={key}")
+
+      # Send request to Redis
+      (status, response) = client.hdel(hash, key)
+
+      # Respond
+      return (
+          jsonify(response),
+          status,
+      )
+
+  except Exception as err:
+      print(f"Error occured : {err}")
+      return (
+          500,
+          jsonify(
+              {
+                  "status": "Error",
+                  "message": "Something went wrong - check logs!",
+              }
+          ),
+      )
 
 
 if __name__ == "__main__":

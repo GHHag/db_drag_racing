@@ -29,6 +29,6 @@ python locustfile.py
 ## Exit virual environment
 
 ```bash
-deactivate &&
-    rm -rf venv
+deactivate
+rm -rf venv
 ```
