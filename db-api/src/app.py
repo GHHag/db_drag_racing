@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, request, jsonify
 from clients.redis_client import RedisClient
 from clients.bigtable_client import BigtableClient
@@ -178,6 +179,45 @@ def write_endpoint():
             200,
         )
 
+    except Exception as err:
+        # Return error response
+        print(f"Error occurred : {err}")
+        return (
+            jsonify(
+                {"status": "Error", "message": "Something went wrong - check logs!"}
+            ),
+            500,
+        )
+
+
+@app.route("/bigtable/read", methods=["GET"])
+def read_endpoint():
+    """
+    Endpoint for Bigtable read using GET request
+    Usage:
+        localhost:8080/bigtable/read?row_key=<key>
+    """
+    # row_key = request.args.get("row_key")
+    # data = bigtable_client.get_row(row_key)
+    # print(data.to_dict())
+    # print(row_key)
+    # print(dict(data))
+    # return (jsonify({}), 200)
+
+    row_key = request.args.get("row_key")
+    data = bigtable_client.get_row(row_key)
+    print(data.to_dict())
+    print(json.dumps(data.to_dict()))
+
+    try:
+        # Get key from request query parameters
+        row_key = request.args.get("row_key")
+
+        # Read data from Bigtable
+        data = bigtable_client.get_row(row_key)
+
+        # Return success response with data
+        return {"status": "success", "data": json.dumps(data.to_dict())}
     except Exception as err:
         # Return error response
         print(f"Error occurred : {err}")

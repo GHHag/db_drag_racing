@@ -37,6 +37,7 @@ class BigtableClient:
         #    'column_id2': 'somevalue'
         # }
         row_key = f'{key_prefix}#{json_data.get("id")}'
+        print(row_key)
         row = self.table.row(row_key)
         for key, value in json_data.items():
             # family name = cars / reparations / parts
@@ -47,7 +48,7 @@ class BigtableClient:
         return {"message": "OK"}
 
     def get_row(self, row_key):
-        row = self.table.row(row_key)
+        row = self.table.read_row(row_key)
         return row
 
     def get_family(self, family_name):
