@@ -2,8 +2,11 @@ import argparse
 import datetime
 
 from google.cloud import bigtable
-#from google.cloud.bigtable import column_family
-#from google.cloud.bigtable import row_filters
+from google.cloud.bigtable import column_family
+from google.cloud.bigtable import row_filters
+
+# from google.cloud.bigtable import column_family
+# from google.cloud.bigtable import row_filters
 
 
 # Service Layer -  business logic.
@@ -12,46 +15,45 @@ from google.cloud import bigtable
 
 class BigtableClient:
     def __init__(self, project_id, instance_id, table_id):
-        client = bigtable.Client(project=project_id, admin=True)
-        instance = client.instance(instance_id)
+        self.client = bigtable.Client(project=project_id, admin=True)
+        self.instance = self.client.instance(instance_id)
+        self.table = self.instance.table(table_id)
 
-        self.project_id = project_id
-        self.instance_id = instance_id
-        self.table_id = table_id
-
-        # Create Bigtable client and table objects
-        self.client = bigtable.Client()
-        self.instance = self.client.instance(self.instance_id)
-        self.table = self.instance.table(self.table_id)
-
+        if not self.table.exists():
+            max_versions_rule = column_family.MaxVersionsGCRule(2)
+            column_family_id = "cf1"
+            column_families = {column_family_id: max_versions_rule}
+            self.table.create(column_families=column_families)
         # Create column family if it doesn't exist
-        self._create_column_family("cf1")
+        # self._create_column_family("cf1")
 
     def _create_column_family(self, column_family_id):
         column_families = {column_family_id: None}
-        self.table.create(column_families=column_families)
+        # self.table.create(column_families=column_families)
 
     def write_row(self, json_data, key_prefix):
-        #json_data = {
+        # json_data = {
         #    'column_id1': 'somevalue',
         #    'column_id2': 'somevalue'
-        #}
+        # }
         row_key = f'{key_prefix}#{json_data.get("id")}'
         row = self.table.row(row_key)
         for key, value in json_data.items():
             # family name = cars / reparations / parts
-            row.set_cell('insert_family_name_here', key, value)
+            row.set_cell("cf1", key, value)
 
         row.commit()
-        return (200, {"message": "OK"})
+        # return (200, {"message": "OK"})
+        return {"message": "OK"}
 
     def get_row(self, row_key):
         row = self.table.row(row_key)
         return row
 
     def get_family(self, family_name):
-        row = self.table.row(f'{family_name}#*')
-        return row
+        row = self.table.row(f"{family_name}#*")
+        filtered_cells = row.cells(self.table.name, column_family=family_name)
+        return filtered_cells
 
 
 """
