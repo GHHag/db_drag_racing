@@ -165,12 +165,6 @@ def read_endpoint():
     Usage:
         localhost:8080/bigtable/read?row_key=<key>
     """
-
-    row_key = request.args.get("row_key")
-    data = bigtable_client.get_row(row_key)
-    print(data.to_dict())
-    # print(json.dumps(data.to_dict()))
-
     try:
         # Get key from request query parameters
         row_key = request.args.get("row_key")
@@ -178,8 +172,7 @@ def read_endpoint():
         # Read data from Bigtable
         data = bigtable_client.get_row(row_key)
 
-        # Return success response with data
-        # return {"status": "success", "data": json.dumps(data.to_dict())}
+        # Return success
         return {"status": "success"}
     except Exception as err:
         # Return error response

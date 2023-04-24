@@ -5,12 +5,8 @@ from google.cloud import bigtable
 from google.cloud.bigtable import column_family
 from google.cloud.bigtable import row_filters
 
-# from google.cloud.bigtable import column_family
-# from google.cloud.bigtable import row_filters
-
 
 # Service Layer -  business logic.
-# WHAT are we saving in the redis instance.
 
 
 class BigtableClient:
@@ -24,12 +20,6 @@ class BigtableClient:
             column_family_id = "cf1"
             column_families = {column_family_id: max_versions_rule}
             self.table.create(column_families=column_families)
-        # Create column family if it doesn't exist
-        # self._create_column_family("cf1")
-
-    def _create_column_family(self, column_family_id):
-        column_families = {column_family_id: None}
-        # self.table.create(column_families=column_families)
 
     def write_row(self, json_data, key_prefix):
         # json_data = {
@@ -55,35 +45,3 @@ class BigtableClient:
         row = self.table.row(f"{family_name}#*")
         filtered_cells = row.cells(self.table.name, column_family=family_name)
         return filtered_cells
-
-
-"""
-{
-  "retailUnit": "CN",
-  "id": "1b2619d2-dabd-11ed-b2f7-2cfda1b6d771",
-  "reparation_ids": [
-    "1b261a40-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b261e50-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b262440-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b262a30-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b262c60-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b262f30-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b26323c-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b263778-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b26387c-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b263b1a-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b263e8a-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b2640f6-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b2645e2-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b264966-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b264dbc-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b264f24-dabd-11ed-b2f7-2cfda1b6d771",
-    "1b26528a-dabd-11ed-b2f7-2cfda1b6d771"
-  ],
-  "date": "11/20/2022",
-  "carvin": "WBSBL93456P534106",
-  "paint": "Mauv",
-  "manufacturer": "Scion",
-  "model": "Sorento"
-}
-"""
