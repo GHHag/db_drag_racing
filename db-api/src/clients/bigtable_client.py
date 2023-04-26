@@ -21,12 +21,33 @@ class BigtableClient:
             column_families = {column_family_id: max_versions_rule}
             self.table.create(column_families=column_families)
 
-    def write_row(self, json_data, key_prefix):
+    """
+    DATA STRUCTURE FOR write_row_gpt()
+    # JSON object to save as a row
+    json_data = {
+        "id": "1",
+        "column_id1": "value1",
+        "column_id2": "value2"
+    }
+    """
+
+    # FROM CHAT GPT, SO I UNDERSTAND
+    def write_row_gpt(self, json_data):
+        # Write the JSON object as a row in Bigtable
+        row_key = f'id#{json_data.get("id")}'
+        row = self.table.row(row_key)
+        for key, value in json_data.items():
+            row.set_cell("cf1", key, value)
+
+        row.commit()
+        print(f"Row with key '{row_key}' written to Bigtable.")
+
+    def write_row(self, json_data):
         # json_data = {
         #    'column_id1': 'somevalue',
         #    'column_id2': 'somevalue'
         # }
-        row_key = f'{key_prefix}#{json_data.get("id")}'
+        row_key = f'{json_data.get("id")}'
         print(row_key)
         row = self.table.row(row_key)
         for key, value in json_data.items():

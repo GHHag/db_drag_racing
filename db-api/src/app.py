@@ -139,7 +139,7 @@ def write_endpoint():
         request_body = request.get_json()
 
         # Write data to Bigtable
-        bigtable_client.write_row(request_body, "")
+        bigtable_client.write_row_gpt(request_body)
 
         # Return success response
         return (
