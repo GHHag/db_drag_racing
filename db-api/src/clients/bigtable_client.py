@@ -36,7 +36,7 @@ class BigtableClient:
     """
 
     # Recieves what data kind (column family) and the whole request body:
-    def write_row_gpt(self, kind, request_body):
+    def write_row(self, kind, request_body):
         if kind not in self.column_families.keys():
             raise Exception("Invalid column family")
         # Write the JSON object as a row in Bigtable
@@ -51,29 +51,10 @@ class BigtableClient:
         print(f"Row with key '{row_key}' written to Bigtable.")
         return {"message": "OK"}
 
-    def write_row(self, json_data):
-        # json_data = {
-        #    'column_id1': 'somevalue',
-        #    'column_id2': 'somevalue'
-        # }
-        row_key = f'{json_data.get("id")}'
-        print(row_key)
-        row = self.table.row(row_key)
-        for key, value in json_data.items():
-            # family name = cars / reparations / parts
-            row.set_cell("cf1", key, value)
-
-        row.commit()
-        # return (200, {"message": "OK"})
-        return {"message": "OK"}
-
     def get_row(self, row_key):
-        row = self.table.read_row(row_key)
+        return self.table.read_row(row_key)
         # convert all values to str to handle bytearray
         # For all values in row, execute str(value, "UTF-8")
-
-        return json.dumps({k: str(v) for k, v in row.items()})
-        return row
 
     def get_family(self, family_name):
         row = self.table.row(f"{family_name}#*")

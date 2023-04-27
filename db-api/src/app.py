@@ -142,7 +142,7 @@ def write_endpoint():
         request_body = request.get_json()
 
         # Write data to Bigtable
-        bigtable_client.write_row_gpt(kind, request_body)
+        bigtable_client.write_row(kind, request_body)
 
         # Return success response
         return (
@@ -176,7 +176,10 @@ def read_endpoint():
         data = bigtable_client.get_row(row_key)
 
         # Return success
-        return {"status": "success"}
+        return (
+            jsonify(data),
+            200,
+        )
     except Exception as err:
         # Return error response
         print(f"Error occurred : {err}")
