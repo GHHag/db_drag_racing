@@ -125,6 +125,7 @@ def hdel_endpoint():
 
 
 # BIGTABLE Routes: POST, READ, DELETE
+# Router & Controller handles everything related to HTTP requests
 
 
 @app.route("/bigtable/write", methods=["POST"])
@@ -132,14 +133,16 @@ def write_endpoint():
     """
     Endpoint for Bigtable write
     Usage:
-        localhost:8080/bigtable/write
+        localhost:8080/bigtable/write?kind=<some_data_kind>
     """
     try:
+        # Parse path params
+        kind = request.args.get("kind")
         # Parse request body
         request_body = request.get_json()
 
         # Write data to Bigtable
-        bigtable_client.write_row_gpt(request_body)
+        bigtable_client.write_row_gpt(kind, request_body)
 
         # Return success response
         return (

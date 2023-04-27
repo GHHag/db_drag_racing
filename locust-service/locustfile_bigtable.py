@@ -5,6 +5,41 @@ import pprint as pprint
 import random
 import json
 
+
+class MyUser(HttpUser):
+    host = "http://localhost:8080"
+
+    def __init__(self, *args, **kwargs):
+        super(MyUser, self).__init__(*args, **kwargs)
+        self.data_key = "data"
+
+        # Define column family and row key(?) for cars
+        self.car_col_family = "cars_data"
+        self.car_row_key = f"{self.car_col_family}#id"
+
+        # Define row key and unique column family? for reparations
+        self.reparation_col_family = "reparations_data"
+        self.reparation_row_key = f"{self.reparation_col_family}#id"
+
+        # Define column family and row key(?) for parts
+        self.part_col_family = "parts_data"
+        self.part_row_key = f"{self.part_col_family}#id"
+
+        self.car_data_list = format_json_data("./data/cars_data.json", "id", "id")
+        self.reparations_data_list = format_json_data(
+            "./data/reparations_data.json", "id", "id"
+        )
+        self.parts_data_list = format_json_data("./data/parts_data.json", "id", "id")
+
+    @task
+    def create_car_post(self):
+        if len(self.cars_data_list):
+            data_entry = self.cars_data_list.pop(0)
+            self.client.post(
+                f"/bigtable/write?kind={self.car_col_family}", json=data_entry
+            )
+
+
 """
 #OLD JSON DATA
 # Test JSON data
