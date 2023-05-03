@@ -40,8 +40,8 @@ if __name__ == "__main__":
     # Call the format_json_data function and pass argument for the hashes and keys to be used
     # for querying the data
     cars_data_list = format_json_data("cars_data.json", "id", "id")
-    reparations_data_list = format_json_data("reparations_data.json", "car_id", "id")
-    parts_data_list = format_json_data("parts_data.json", "reparation_id", "id")
+    reparations_data_list = format_json_data("reparations_data.json", "id", "id")
+    parts_data_list = format_json_data("parts_data.json", "id", "id")
 
     pprint.pprint(cars_data_list[0])
     print()

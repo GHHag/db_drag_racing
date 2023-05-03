@@ -1,1 +1,239 @@
-[{"id": "1b376c6e-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864623", "cost": 21807, "note": "Reparation note", "operator": "Operator4", "part_ids": ["1b376cdc-dabd-11ed-b2f7-2cfda1b6d771", "1b376d4a-dabd-11ed-b2f7-2cfda1b6d771", "1b376dc2-dabd-11ed-b2f7-2cfda1b6d771", "1b376e30-dabd-11ed-b2f7-2cfda1b6d771", "1b376e94-dabd-11ed-b2f7-2cfda1b6d771", "1b376f02-dabd-11ed-b2f7-2cfda1b6d771", "1b376f66-dabd-11ed-b2f7-2cfda1b6d771", "1b376fd4-dabd-11ed-b2f7-2cfda1b6d771", "1b377038-dabd-11ed-b2f7-2cfda1b6d771", "1b37709c-dabd-11ed-b2f7-2cfda1b6d771", "1b377100-dabd-11ed-b2f7-2cfda1b6d771", "1b37716e-dabd-11ed-b2f7-2cfda1b6d771", "1b3771d2-dabd-11ed-b2f7-2cfda1b6d771", "1b377240-dabd-11ed-b2f7-2cfda1b6d771", "1b3772a4-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b37733a-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864795", "cost": 1727, "note": "Reparation note", "operator": "Operator10", "part_ids": ["1b3773a8-dabd-11ed-b2f7-2cfda1b6d771", "1b377416-dabd-11ed-b2f7-2cfda1b6d771", "1b377484-dabd-11ed-b2f7-2cfda1b6d771", "1b3774e8-dabd-11ed-b2f7-2cfda1b6d771", "1b377556-dabd-11ed-b2f7-2cfda1b6d771", "1b3775ba-dabd-11ed-b2f7-2cfda1b6d771", "1b37761e-dabd-11ed-b2f7-2cfda1b6d771", "1b37768c-dabd-11ed-b2f7-2cfda1b6d771", "1b3776f0-dabd-11ed-b2f7-2cfda1b6d771", "1b377754-dabd-11ed-b2f7-2cfda1b6d771", "1b3777c2-dabd-11ed-b2f7-2cfda1b6d771", "1b377826-dabd-11ed-b2f7-2cfda1b6d771", "1b37788a-dabd-11ed-b2f7-2cfda1b6d771", "1b3778f8-dabd-11ed-b2f7-2cfda1b6d771", "1b37795c-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b3779f2-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864821", "cost": 29654, "note": "Reparation note", "operator": "Operator8", "part_ids": ["1b377a60-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b377af6-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864867", "cost": 25899, "note": "Reparation note", "operator": "Operator8", "part_ids": ["1b377b5a-dabd-11ed-b2f7-2cfda1b6d771", "1b377bc8-dabd-11ed-b2f7-2cfda1b6d771", "1b377c2c-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b377cc2-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864959", "cost": 23276, "note": "Reparation note", "operator": "Operator8", "part_ids": ["1b377d26-dabd-11ed-b2f7-2cfda1b6d771", "1b377d94-dabd-11ed-b2f7-2cfda1b6d771", "1b377df8-dabd-11ed-b2f7-2cfda1b6d771", "1b377e66-dabd-11ed-b2f7-2cfda1b6d771", "1b377eca-dabd-11ed-b2f7-2cfda1b6d771", "1b377f60-dabd-11ed-b2f7-2cfda1b6d771", "1b377fce-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b37805a-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.864995", "cost": 16404, "note": "Reparation note", "operator": "Operator14", "part_ids": ["1b3780c8-dabd-11ed-b2f7-2cfda1b6d771", "1b37812c-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b3781b8-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865020", "cost": 23275, "note": "Reparation note", "operator": "Operator4", "part_ids": ["1b378226-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b3782b2-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865076", "cost": 8682, "note": "Reparation note", "operator": "Operator2", "part_ids": ["1b378320-dabd-11ed-b2f7-2cfda1b6d771", "1b37838e-dabd-11ed-b2f7-2cfda1b6d771", "1b3783f2-dabd-11ed-b2f7-2cfda1b6d771", "1b378456-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b3784ec-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865174", "cost": 14569, "note": "Reparation note", "operator": "Operator17", "part_ids": ["1b37855a-dabd-11ed-b2f7-2cfda1b6d771", "1b3785be-dabd-11ed-b2f7-2cfda1b6d771", "1b37862c-dabd-11ed-b2f7-2cfda1b6d771", "1b378690-dabd-11ed-b2f7-2cfda1b6d771", "1b3786f4-dabd-11ed-b2f7-2cfda1b6d771", "1b378762-dabd-11ed-b2f7-2cfda1b6d771", "1b3787c6-dabd-11ed-b2f7-2cfda1b6d771", "1b37882a-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b3788c0-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865230", "cost": 28857, "note": "Reparation note", "operator": "Operator1", "part_ids": ["1b378924-dabd-11ed-b2f7-2cfda1b6d771", "1b378992-dabd-11ed-b2f7-2cfda1b6d771", "1b3789f6-dabd-11ed-b2f7-2cfda1b6d771", "1b378a64-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b378af0-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865318", "cost": 12987, "note": "Reparation note", "operator": "Operator17", "part_ids": ["1b378b5e-dabd-11ed-b2f7-2cfda1b6d771", "1b378bc2-dabd-11ed-b2f7-2cfda1b6d771", "1b378c30-dabd-11ed-b2f7-2cfda1b6d771", "1b378c94-dabd-11ed-b2f7-2cfda1b6d771", "1b378d02-dabd-11ed-b2f7-2cfda1b6d771", "1b378d66-dabd-11ed-b2f7-2cfda1b6d771", "1b378dca-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b378e56-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865354", "cost": 2962, "note": "Reparation note", "operator": "Operator6", "part_ids": ["1b378ec4-dabd-11ed-b2f7-2cfda1b6d771", "1b378f28-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b378fbe-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865446", "cost": 25978, "note": "Reparation note", "operator": "Operator17", "part_ids": ["1b37902c-dabd-11ed-b2f7-2cfda1b6d771", "1b3790b8-dabd-11ed-b2f7-2cfda1b6d771", "1b37911c-dabd-11ed-b2f7-2cfda1b6d771", "1b37918a-dabd-11ed-b2f7-2cfda1b6d771", "1b3791f8-dabd-11ed-b2f7-2cfda1b6d771", "1b37925c-dabd-11ed-b2f7-2cfda1b6d771", "1b3792c0-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b379356-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865579", "cost": 12182, "note": "Reparation note", "operator": "Operator16", "part_ids": ["1b3793c4-dabd-11ed-b2f7-2cfda1b6d771", "1b379432-dabd-11ed-b2f7-2cfda1b6d771", "1b379496-dabd-11ed-b2f7-2cfda1b6d771", "1b379504-dabd-11ed-b2f7-2cfda1b6d771", "1b379568-dabd-11ed-b2f7-2cfda1b6d771", "1b3795cc-dabd-11ed-b2f7-2cfda1b6d771", "1b379676-dabd-11ed-b2f7-2cfda1b6d771", "1b3796f8-dabd-11ed-b2f7-2cfda1b6d771", "1b37977a-dabd-11ed-b2f7-2cfda1b6d771", "1b3797fc-dabd-11ed-b2f7-2cfda1b6d771"]}, {"id": "1b379892-dabd-11ed-b2f7-2cfda1b6d771", "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771", "date": "2023-04-14 14:08:45.865647", "cost": 28166, "note": "Reparation note", "operator": "Operator6", "part_ids": ["1b379900-dabd-11ed-b2f7-2cfda1b6d771", "1b379964-dabd-11ed-b2f7-2cfda1b6d771", "1b3799d2-dabd-11ed-b2f7-2cfda1b6d771", "1b379a36-dabd-11ed-b2f7-2cfda1b6d771", "1b379aa4-dabd-11ed-b2f7-2cfda1b6d771"]}]
+[
+  {
+    "id": "1b376c6e-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864623",
+    "cost": 21807,
+    "note": "Reparation note",
+    "operator": "Operator4",
+    "part_ids": [
+      "1b376cdc-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376d4a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376dc2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376e30-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376e94-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376f02-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376f66-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b376fd4-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377038-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37709c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377100-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37716e-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3771d2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377240-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3772a4-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b37733a-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864795",
+    "cost": 1727,
+    "note": "Reparation note",
+    "operator": "Operator10",
+    "part_ids": [
+      "1b3773a8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377416-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377484-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3774e8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377556-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3775ba-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37761e-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37768c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3776f0-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377754-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3777c2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377826-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37788a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3778f8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37795c-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b3779f2-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864821",
+    "cost": 29654,
+    "note": "Reparation note",
+    "operator": "Operator8",
+    "part_ids": ["1b377a60-dabd-11ed-b2f7-2cfda1b6d771"]
+  },
+  {
+    "id": "1b377af6-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864867",
+    "cost": 25899,
+    "note": "Reparation note",
+    "operator": "Operator8",
+    "part_ids": [
+      "1b377b5a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377bc8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377c2c-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b377cc2-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864959",
+    "cost": 23276,
+    "note": "Reparation note",
+    "operator": "Operator8",
+    "part_ids": [
+      "1b377d26-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377d94-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377df8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377e66-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377eca-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377f60-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b377fce-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b37805a-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.864995",
+    "cost": 16404,
+    "note": "Reparation note",
+    "operator": "Operator14",
+    "part_ids": [
+      "1b3780c8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37812c-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b3781b8-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865020",
+    "cost": 23275,
+    "note": "Reparation note",
+    "operator": "Operator4",
+    "part_ids": ["1b378226-dabd-11ed-b2f7-2cfda1b6d771"]
+  },
+  {
+    "id": "1b3782b2-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865076",
+    "cost": 8682,
+    "note": "Reparation note",
+    "operator": "Operator2",
+    "part_ids": [
+      "1b378320-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37838e-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3783f2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378456-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b3784ec-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865174",
+    "cost": 14569,
+    "note": "Reparation note",
+    "operator": "Operator17",
+    "part_ids": [
+      "1b37855a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3785be-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37862c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378690-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3786f4-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378762-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3787c6-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37882a-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b3788c0-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865230",
+    "cost": 28857,
+    "note": "Reparation note",
+    "operator": "Operator1",
+    "part_ids": [
+      "1b378924-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378992-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3789f6-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378a64-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b378af0-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865318",
+    "cost": 12987,
+    "note": "Reparation note",
+    "operator": "Operator17",
+    "part_ids": [
+      "1b378b5e-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378bc2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378c30-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378c94-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378d02-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378d66-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378dca-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b378e56-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865354",
+    "cost": 2962,
+    "note": "Reparation note",
+    "operator": "Operator6",
+    "part_ids": [
+      "1b378ec4-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b378f28-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b378fbe-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865446",
+    "cost": 25978,
+    "note": "Reparation note",
+    "operator": "Operator17",
+    "part_ids": [
+      "1b37902c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3790b8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37911c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37918a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3791f8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37925c-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3792c0-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b379356-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865579",
+    "cost": 12182,
+    "note": "Reparation note",
+    "operator": "Operator16",
+    "part_ids": [
+      "1b3793c4-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379432-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379496-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379504-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379568-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3795cc-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379676-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3796f8-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b37977a-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3797fc-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  },
+  {
+    "id": "1b379892-dabd-11ed-b2f7-2cfda1b6d771",
+    "car_id": "1b376bf6-dabd-11ed-b2f7-2cfda1b6d771",
+    "date": "2023-04-14 14:08:45.865647",
+    "cost": 28166,
+    "note": "Reparation note",
+    "operator": "Operator6",
+    "part_ids": [
+      "1b379900-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379964-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b3799d2-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379a36-dabd-11ed-b2f7-2cfda1b6d771",
+      "1b379aa4-dabd-11ed-b2f7-2cfda1b6d771"
+    ]
+  }
+]

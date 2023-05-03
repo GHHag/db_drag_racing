@@ -42,12 +42,12 @@ class MyUser(HttpUser):
         )
         # When we want to READ (cRud) the created objects, we want to retrieve unique hashes and ids
         self.car_hashes = set()
-        self.car_ids = {} # { PT: [car_id1, car_id2], RU: [] }
+        self.car_ids = {}  # { PT: [car_id1, car_id2], RU: [] }
         self.reparation_hashes = set()
         self.reparation_ids = {}
         self.part_hashes = set()
         self.part_ids = {}
-        
+
     # A post request to API (create)
     # If len > 0 then pop so we dont write the same line twice
     # First tasks saves cars_data_json to Redis
@@ -63,12 +63,16 @@ class MyUser(HttpUser):
             )
             # pushes the car hash key to a set
             self.car_hashes.add(data_entry.get(self.car_hash_key))
-            #self.car_ids.append(data_entry.get(self.car_unique_key))
+            # self.car_ids.append(data_entry.get(self.car_unique_key))
             # if the list of car ids for the retailunit exists, append to it, else create a new list
             if data_entry.get(self.car_hash_key) in self.car_ids:
-                self.car_ids[data_entry.get(self.car_hash_key)].append(data_entry.get(self.car_unique_key))
+                self.car_ids[data_entry.get(self.car_hash_key)].append(
+                    data_entry.get(self.car_unique_key)
+                )
             else:
-                self.car_ids[data_entry.get(self.car_hash_key)] = [data_entry.get(self.car_unique_key)]
+                self.car_ids[data_entry.get(self.car_hash_key)] = [
+                    data_entry.get(self.car_unique_key)
+                ]
         else:
             pass
             # exit(1)
@@ -81,9 +85,9 @@ class MyUser(HttpUser):
                 f"/redis/hset?hash={data_entry.get(self.reparation_hash_key)}&key={data_entry.get(self.reparation_unique_key)}&value={data_entry.get(self.data_key)}",
                 headers={"content-type": "application/json"},
             )
-            #self.reparation_hashes.add(data_entry.get(self.reparation_hash_key))
-            #self.reparation_ids.append(data_entry.get(self.reparation_unique_key))
-      
+            # self.reparation_hashes.add(data_entry.get(self.reparation_hash_key))
+            # self.reparation_ids.append(data_entry.get(self.reparation_unique_key))
+
     @task
     def create_parts_post(self):
         if len(self.parts_data_list):
@@ -96,43 +100,47 @@ class MyUser(HttpUser):
             # self.part_ids.append(data_entry.get(self.part_unique_key))
 
     wait_time = between(0, 1)
-    
+
     # READ
     @task
     def get_car_hash(self):
-        # how do we get an item from a random index of the set? 
+        # how do we get an item from a random index of the set?
         # random_car_hash = self.car_hashes[random.randint(0, len(self.car_hashes) - 1)]
         # random_car_id = self.car_ids.get(random_car_hash)[random.randint(0, len(self.car_ids.get(random_car_hash)) - 1)]
 
         # get a random car hash from the set
         if len(self.car_hashes) >= 1:
             random_car_hash = random.sample(self.car_hashes, 1)[0]
-        # get a random car id from the list of car ids associated with the selected car hash
+            # get a random car id from the list of car ids associated with the selected car hash
             if len(self.car_ids[random_car_hash]) >= 1:
                 random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
             else:
                 return
-            response = self.client.get(f'/redis/hget?hash={random_car_hash}&key={random_car_id}')
+            response = self.client.get(
+                f"/redis/hget?hash={random_car_hash}&key={random_car_id}"
+            )
             if response.status_code == 200:
                 redis_hash = response.json()
                 print(redis_hash)
             else:
                 pass
-            
+
     # DELETE
     @task
     def delete_car(self):
         if len(self.car_hashes) >= 1:
-            random_car_hash = random.sample(self.car_hashes,1)[0]
+            random_car_hash = random.sample(self.car_hashes, 1)[0]
             # Checks so we dont pop from an empty list
             if len(self.car_ids[random_car_hash]) >= 1:
-            # random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
+                # random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
                 random_car_id = self.car_ids[random_car_hash].pop(0)
             else:
                 return
-            response = self.client.delete(f'/redis/hdel?hash={random_car_hash}&key{random_car_id}')
+            response = self.client.delete(
+                f"/redis/hdel?hash={random_car_hash}&key{random_car_id}"
+            )
             if response.status_code == 200:
-                print(f'DELETED SUCCESFULLY {random_car_id} key ')
+                print(f"DELETED SUCCESFULLY {random_car_id} key ")
             else:
                 pass
 
