@@ -42,11 +42,14 @@ class BigtableClient:
         return {"message": "OK"}
 
     def get_row(self, row_key):
-        return self.table.read_row(row_key)
-        # convert all values to str to handle bytearray
-        # For all values in row, execute str(value, "UTF-8")
+        row = self.table.read_row(row_key)
+        print(row_key)
+        print(row.cells)
+        return row.cells
 
     def get_family(self, family_name):
         row = self.table.row(f"{family_name}#*")
+        print(self.table.name)
         filtered_cells = row.cells(self.table.name, column_family=family_name)
+
         return filtered_cells

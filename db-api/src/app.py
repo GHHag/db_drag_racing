@@ -166,18 +166,18 @@ def read_endpoint():
     """
     Endpoint for Bigtable read using GET request
     Usage:
-        localhost:8080/bigtable/read?row_key=<key>
+        localhost:8080/bigtable/read?row_key=<key>&row_id=<id>
     """
     try:
         # Get key from request query parameters
         row_key = request.args.get("row_key")
-
+        row_id = request.args.get("row_id")
         # Read data from Bigtable
-        data = bigtable_client.get_row(row_key)
+        data = bigtable_client.get_row(f"{row_key}#{row_id}")
 
         # Return success
         return (
-            jsonify(data),
+            str(data),
             200,
         )
     except Exception as err:
