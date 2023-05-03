@@ -1,13 +1,17 @@
 from locust import HttpUser, task, between
-from google.cloud import bigtable
 from data.data import format_json_data
 import pprint as pprint
 import random
 import json
 
+from google.cloud import bigtable
+from google.cloud.bigtable import column_family
+from google.cloud.bigtable import row_filters
+
 
 class MyUser(HttpUser):
     host = "http://localhost:8080"
+    wait_time = between(1, 5)  # Adjust the waiting time between requests as needed
 
     def __init__(self, *args, **kwargs):
         super(MyUser, self).__init__(*args, **kwargs)
@@ -33,8 +37,8 @@ class MyUser(HttpUser):
 
     @task
     def create_car_post(self):
-        if len(self.cars_data_list):
-            data_entry = self.cars_data_list.pop(0)
+        if len(self.car_data_list):
+            data_entry = self.car_data_list.pop(0)
             self.client.post(
                 f"/bigtable/write?kind={self.car_col_family}", json=data_entry
             )
@@ -52,9 +56,9 @@ data_to_send = [
 
 # DATA STRUCTURE FOR write_row_gpt()
 # JSON object to save as a row
-json_data = {"id": "1", "column_id1": "value1", "column_id2": "value2"}
+# json_data = {"id": "1", "column_id1": "value1", "column_id2": "value2"}
 
-
+"""
 class BigtableWriteUser(HttpUser):
     host = "http://localhost:8080"  # Set the base host here
     wait_time = between(1, 5)  # Adjust the waiting time between requests as needed
@@ -64,3 +68,4 @@ class BigtableWriteUser(HttpUser):
         for data in json_data:
             headers = {"Content-Type": "application/json"}
             self.client.post("/bigtable/write", data=json.dumps(data), headers=headers)
+"""

@@ -25,16 +25,6 @@ class BigtableClient:
         if not self.table.exists():
             self.table.create(column_families=self.column_families)
 
-    """
-    DATA STRUCTURE FOR write_row_gpt()
-    # JSON object to save as a row
-    json_data = {
-        "id": "1",
-        "column_id1": "value1",
-        "column_id2": "value2"
-    }
-    """
-
     # Recieves what data kind (column family) and the whole request body:
     def write_row(self, kind, request_body):
         if kind not in self.column_families.keys():
