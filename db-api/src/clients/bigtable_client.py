@@ -47,6 +47,29 @@ class BigtableClient:
         print(row.cells)
         return row.cells
 
+    # Original implementation
+    def delete_row(self, row_key):
+        # Delete the specific row
+        row = self.table.row(row_key)
+        row.delete()
+        row.commit()
+        return {"message": "Row is deleted!"}
+
+    # GPT implementation
+    def delete_row_gpt(self, row_key):
+        # Check if the row exists
+        row = self.table.read_row(row_key)
+        print(row)
+        if row is None:
+            return {"status": "Error", "message": "Row not found"}
+
+        # Delete the specific row
+        row = self.table.row(row_key)
+        row.delete()
+        row.commit()
+        return {"status": "success", "message": "Row is deleted!"}
+
+    # Not in use atm
     def get_family(self, family_name):
         row = self.table.row(f"{family_name}#*")
         print(self.table.name)

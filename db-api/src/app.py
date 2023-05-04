@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from clients.redis_client import RedisClient
 from clients.bigtable_client import BigtableClient
 
@@ -184,6 +184,38 @@ def read_endpoint():
         # Return error response
         print(f"Error occurred : {err}")
         return (
+            jsonify(
+                {"status": "Error", "message": "Something went wrong - check logs!"}
+            ),
+            500,
+        )
+
+
+@app.route("/bigtable/delete", methods=["DELETE"])
+def bigtable_delete_endpoint():
+    """
+    Endpoint for Bigtable DELETE
+    Usage:
+        localhost:8080/bigtable/delete?row_key=<key>&row_id=<id>
+    """
+    try:
+        # Get key from request query parameters
+        row_key = request.args.get("row_key")
+        row_id = request.args.get("row_id")
+        if row_key is None:
+            return make_response(
+                jsonify({"status": "Error", "message": "Missing row_key parameter"})
+            )
+        # Delete data from Bigtable
+        response = bigtable_client.delete_row_gpt(f"{row_key}#{row_id}")
+
+        # Return success
+        return make_response(jsonify(response), 200)
+
+    except Exception as err:
+        # Return error response
+        print(f"Error occurred : {err}")
+        return make_response(
             jsonify(
                 {"status": "Error", "message": "Something went wrong - check logs!"}
             ),
