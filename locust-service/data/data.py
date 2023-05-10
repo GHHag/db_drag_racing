@@ -2,7 +2,7 @@ import requests
 import json
 import pprint as pprint
 
-# Läser in och formaterar datan som skickas sedan till Redis server
+# Läser in och formaterar datan som skickas sedan till Redis and Bigtable server
 
 
 """
