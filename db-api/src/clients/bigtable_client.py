@@ -41,22 +41,15 @@ class BigtableClient:
         print(f"Row with key '{row_key}' written to Bigtable.")
         return {"message": "OK"}
 
+    # GET
     def get_row(self, row_key):
         row = self.table.read_row(row_key)
         print(row_key)
         print(row.cells)
         return row.cells
 
-    # Original implementation
+    # DELETE
     def delete_row(self, row_key):
-        # Delete the specific row
-        row = self.table.row(row_key)
-        row.delete()
-        row.commit()
-        return {"message": "Row is deleted!"}
-
-    # GPT implementation
-    def delete_row_gpt(self, row_key):
         # Check if the row exists
         row = self.table.read_row(row_key)
         print(row)

@@ -12,7 +12,6 @@ class MyUser(HttpUser):
     def __init__(self, *args, **kwargs):
         # Call constructor of super class (HTTPUser)
         super(MyUser, self).__init__(*args, **kwargs)
-
         self.data_key = "data"
 
         # Define hash and unique key for cars
@@ -28,7 +27,7 @@ class MyUser(HttpUser):
         self.part_hash_key = "name"
         self.part_unique_key = "id"
 
-        # Read in data
+        # Read in data from the static mock-data files
         self.cars_data_list = format_json_data(
             "./data/cars_data.json", self.car_hash_key, self.car_unique_key
         )
@@ -101,7 +100,7 @@ class MyUser(HttpUser):
 
     wait_time = between(0, 1)
 
-    # READ
+    # READ ALL
     @task
     def get_car_hash(self):
         # how do we get an item from a random index of the set?
@@ -120,8 +119,7 @@ class MyUser(HttpUser):
                 f"/redis/hget?hash={random_car_hash}&key={random_car_id}"
             )
             if response.status_code == 200:
-                redis_hash = response.json()
-                print(redis_hash)
+                print(response.json())
             else:
                 pass
 
