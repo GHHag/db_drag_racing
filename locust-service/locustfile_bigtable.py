@@ -11,7 +11,7 @@ from google.cloud.bigtable import row_filters
 
 class MyUser(HttpUser):
     host = "http://localhost:8080"
-    # wait_time = between(1, 5)  # Adjust the waiting time between requests as needed
+    wait_time = between(1, 2)  # Adjust the waiting time between requests as needed
 
     def __init__(self, *args, **kwargs):
         super(MyUser, self).__init__(*args, **kwargs)
@@ -122,4 +122,44 @@ class MyUser(HttpUser):
             else:
                 pass
 
-    # DELETE
+    # DELETE Cars
+    @task
+    def delete_car(self):
+        if len(self.car_ids) >= 1:
+            random_id_index = random.randint(0, len(self.car_ids) - 1)
+            car_id = self.car_ids.pop(random_id_index)
+            response = self.client.delete(
+                f"/bigtable/delete?row_key={self.car_col_family}&row_id={car_id}"
+            )
+            if response.status_code == 200:
+                print(f"DELETED SUCCESSFULLY {car_id} id")
+            else:
+                pass
+
+    # DELETE Reparation
+    @task
+    def delete_reparation(self):
+        if len(self.reparation_ids) >= 1:
+            random_id_index = random.randint(0, len(self.reparation_ids) - 1)
+            reparation_id = self.reparation_ids.pop(random_id_index)
+            response = self.client.delete(
+                f"/bigtable/delete?row_key={self.reparation_col_family}&row_id={reparation_id}"
+            )
+            if response.status_code == 200:
+                print(f"DELETED SUCCESSFULLY {reparation_id} id")
+            else:
+                pass
+
+    # DELETE Part
+    @task
+    def delete_part(self):
+        if len(self.part_ids) >= 1:
+            random_id_index = random.randint(0, len(self.part_ids) - 1)
+            part_id = self.part_ids.pop(random_id_index)
+            response = self.client.delete(
+                f"/bigtable/delete?row_key={self.part_col_family}&row_id={part_id}"
+            )
+            if response.status_code == 200:
+                print(f"DELETED SUCCESSFULLY {part_id} id")
+            else:
+                pass

@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify
 from clients.redis_client import RedisClient
 from clients.bigtable_client import BigtableClient
 
@@ -203,19 +203,17 @@ def bigtable_delete_endpoint():
         row_key = request.args.get("row_key")
         row_id = request.args.get("row_id")
         if row_key is None:
-            return make_response(
-                jsonify({"status": "Error", "message": "Missing row_key parameter"})
-            )
+            return jsonify({"status": "Error", "message": "Missing row_key parameter"})
         # Delete data from Bigtable
-        response = bigtable_client.delete_row_gpt(f"{row_key}#{row_id}")
+        response = bigtable_client.delete_row(f"{row_key}#{row_id}")
 
         # Return success
-        return make_response(jsonify(response), 200)
+        return (jsonify(response), 200)
 
     except Exception as err:
         # Return error response
         print(f"Error occurred : {err}")
-        return make_response(
+        return (
             jsonify(
                 {"status": "Error", "message": "Something went wrong - check logs!"}
             ),
