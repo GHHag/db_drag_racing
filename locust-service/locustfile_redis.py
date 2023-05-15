@@ -109,7 +109,7 @@ class MyUser(HttpUser):
 
         # get a random car hash from the set
         if len(self.car_hashes) >= 1:
-            random_car_hash = random.sample(self.car_hashes, 1)[0]
+            random_car_hash = random.sample(list(self.car_hashes), 1)[0]
             # get a random car id from the list of car ids associated with the selected car hash
             if len(self.car_ids[random_car_hash]) >= 1:
                 random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
@@ -127,20 +127,23 @@ class MyUser(HttpUser):
     @task
     def delete_car(self):
         if len(self.car_hashes) >= 1:
-            random_car_hash = random.sample(self.car_hashes, 1)[0]
+            random_car_hash = random.sample(list(self.car_hashes), 1)[0]
+
+            # random_car_hash = random.sample(self.car_hashes, 1)[0]
             # Checks so we dont pop from an empty list
             if len(self.car_ids[random_car_hash]) >= 1:
                 # random_car_id = random.sample(self.car_ids[random_car_hash], 1)[0]
                 random_car_id = self.car_ids[random_car_hash].pop(0)
+
+                response = self.client.delete(
+                    f"/redis/hdel?hash={random_car_hash}&key={random_car_id}"
+                )
+                if response.status_code == 200:
+                    print(f"DELETED SUCCESFULLY {random_car_id} key ")
             else:
                 return
-            response = self.client.delete(
-                f"/redis/hdel?hash={random_car_hash}&key{random_car_id}"
-            )
-            if response.status_code == 200:
-                print(f"DELETED SUCCESFULLY {random_car_id} key ")
-            else:
-                pass
+        else:
+            return
 
 
 """

@@ -11,9 +11,10 @@ os.environ["BIGTABLE_INSTANCE_ID"] = "instance_id"
 
 app = Flask(__name__)
 client = RedisClient()
-bigtable_client = BigtableClient(
-    "project_id", "instance_id", "table_id"
-)  # these are the names u enter in the extension!
+# bigtable_client = BigtableClient(
+#     "project_id", "instance_id", "table_id"
+# )  # these are the names u enter in the extension!
+bigtable_client = None
 
 
 # Router & Controller handles everything related to HTTP requests
