@@ -6,7 +6,8 @@ import random
 
 # MyUser ärver från HTTPUser
 class MyUser(HttpUser):
-    host = "http://localhost:8080"
+    # host = "http://localhost:8080"
+    host = "http://api:8080"
 
     # Constructor
     def __init__(self, *args, **kwargs):

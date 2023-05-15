@@ -1,11 +1,14 @@
 import redis
 
+
 # Service Layer -  business logic.
 # WHAT are we saving in the redis instance.
 class RedisClient:
     def __init__(self):
         # Setup
-        self.redis_client = redis.StrictRedis(host="localhost", port="6379")
+        self.redis_client = redis.StrictRedis(
+            host="redis", port="6379"
+        )  # Change host to "localhost"
 
     def hget(self, hash: str, key: str):
         """

@@ -11,9 +11,10 @@ os.environ["BIGTABLE_INSTANCE_ID"] = "instance_id"
 
 app = Flask(__name__)
 client = RedisClient()
-bigtable_client = BigtableClient(
-    "project_id", "instance_id", "table_id"
-)  # these are the names u enter in the extension!
+# bigtable_client = BigtableClient(
+#     "project_id", "instance_id", "table_id"
+# )  # these are the names u enter in the extension!
+bigtable_client = None  # This is for the docker image
 
 
 # Router & Controller handles everything related to HTTP requests
@@ -222,4 +223,5 @@ def bigtable_delete_endpoint():
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
+    # app.run()  # For docker

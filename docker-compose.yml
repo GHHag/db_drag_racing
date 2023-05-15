@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 
 services:
   redis:
@@ -7,7 +7,6 @@ services:
       - 6379:6379
     volumes:
       - redis_data:/data/redis_data
-  
   api:
     depends_on:
       - redis
@@ -24,4 +23,3 @@ services:
 
 volumes:
   redis_data:
-
