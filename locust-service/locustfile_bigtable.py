@@ -11,7 +11,7 @@ from google.cloud.bigtable import row_filters
 
 class MyUser(HttpUser):
     host = "http://localhost:8080"
-    wait_time = between(1, 2)  # Adjust the waiting time between requests as needed
+    # wait_time = between(1, 2)  # Adjust the waiting time between requests as needed
 
     def __init__(self, *args, **kwargs):
         super(MyUser, self).__init__(*args, **kwargs)

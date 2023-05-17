@@ -99,8 +99,6 @@ class MyUser(HttpUser):
             # self.part_hashes.add(data_entry.get(self.part_hash_key))
             # self.part_ids.append(data_entry.get(self.part_unique_key))
 
-    wait_time = between(0, 1)
-
     # READ ALL
     @task
     def get_car_hash(self):
